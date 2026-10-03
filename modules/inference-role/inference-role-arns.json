@@ -1,0 +1,121 @@
+{
+  "$note": [
+    "The Amazon Bedrock ARN grammar Soroush uses when it renders the permission policy of the inference role.",
+    "The inference-role module reads this file, so the policy the module creates matches the one Soroush publishes.",
+    "This file is generated. Do not edit it."
+  ],
+  "arn": {
+    "foundationModelAccountField": "",
+    "foundationModelResourceType": "foundation-model",
+    "inferenceProfileResourceType": "inference-profile",
+    "partition": "aws",
+    "service": "bedrock",
+    "template": "arn:<partition>:<service>:<region>:<accountId>:<resourceType>/<resourceName>"
+  },
+  "classification": {
+    "caseSensitive": true,
+    "geographySeparator": ".",
+    "malformedWhen": [
+      "the identifier is empty",
+      "the identifier has leading or trailing whitespace — not the string Bedrock would be handed",
+      "the first segment is a known geography and the remainder is empty (eu., or a bare eu)"
+    ],
+    "separatorOccurrence": "first",
+    "unknownFirstSegmentIsProvider": true
+  },
+  "crossGeographyGeographies": [
+    "global"
+  ],
+  "derivation": [
+    {
+      "accountId": "111122223333",
+      "arns": [
+        "arn:aws:bedrock:us-east-1:111122223333:inference-profile/eu.amazon.nova-micro-v1:0",
+        "arn:aws:bedrock:eu-*::foundation-model/amazon.nova-micro-v1:0"
+      ],
+      "case": "profile in geography \"eu\"",
+      "id": "eu.amazon.nova-micro-v1:0",
+      "region": "us-east-1"
+    },
+    {
+      "accountId": "111122223333",
+      "arns": [
+        "arn:aws:bedrock:us-east-1:111122223333:inference-profile/us.amazon.nova-micro-v1:0",
+        "arn:aws:bedrock:us-*::foundation-model/amazon.nova-micro-v1:0"
+      ],
+      "case": "profile in geography \"us\"",
+      "id": "us.amazon.nova-micro-v1:0",
+      "region": "us-east-1"
+    },
+    {
+      "accountId": "111122223333",
+      "arns": [
+        "arn:aws:bedrock:us-east-1:111122223333:inference-profile/apac.amazon.nova-micro-v1:0",
+        "arn:aws:bedrock:ap-*::foundation-model/amazon.nova-micro-v1:0"
+      ],
+      "case": "profile in geography \"apac\"",
+      "id": "apac.amazon.nova-micro-v1:0",
+      "region": "us-east-1"
+    },
+    {
+      "accountId": "111122223333",
+      "arns": [
+        "arn:aws:bedrock:us-east-1:111122223333:inference-profile/global.amazon.nova-micro-v1:0",
+        "arn:aws:bedrock:*::foundation-model/amazon.nova-micro-v1:0"
+      ],
+      "case": "profile in geography \"global\"",
+      "id": "global.amazon.nova-micro-v1:0",
+      "region": "us-east-1"
+    },
+    {
+      "accountId": "111122223333",
+      "arns": [
+        "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-micro-v1:0"
+      ],
+      "case": "bare, provider-prefixed foundation-model id — one ARN, no inference profile",
+      "id": "amazon.nova-micro-v1:0",
+      "region": "us-east-1"
+    }
+  ],
+  "geographies": [
+    "eu",
+    "us",
+    "apac",
+    "global"
+  ],
+  "refusedIdentifiers": [
+    "",
+    " ",
+    "\t",
+    "eu.",
+    "us.",
+    "apac.",
+    "global.",
+    "eu",
+    "us",
+    "apac",
+    "global",
+    " eu.amazon.nova-micro-v1:0",
+    "eu.amazon.nova-micro-v1:0 "
+  ],
+  "regionWildcards": {
+    "apac": "ap-*",
+    "eu": "eu-*",
+    "global": "*",
+    "us": "us-*"
+  },
+  "workedExample": {
+    "accountId": "111122223333",
+    "arns": [
+      "arn:aws:bedrock:us-east-1:111122223333:inference-profile/us.amazon.nova-micro-v1:0",
+      "arn:aws:bedrock:us-*::foundation-model/amazon.nova-micro-v1:0",
+      "arn:aws:bedrock:us-east-1:111122223333:inference-profile/eu.amazon.nova-2-lite-v1:0",
+      "arn:aws:bedrock:eu-*::foundation-model/amazon.nova-2-lite-v1:0"
+    ],
+    "profileIds": [
+      "us.amazon.nova-micro-v1:0",
+      "eu.amazon.nova-2-lite-v1:0"
+    ],
+    "region": "us-east-1"
+  }
+}
